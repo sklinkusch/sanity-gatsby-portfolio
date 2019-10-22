@@ -14,6 +14,11 @@ const Addresssection = () => (
       <p>Benutze das Charfenster unten rechts</p>
       <p>Mo. - Fr. von 9:00 - 17:00 Uhr</p>
     </div>
+    <div className='nachricht addresselement'>
+      <h3 className='addresstitle'>Nachricht</h3>
+      <p>fragen@sleepink.de</p>
+      <p>Wir werden so schnell wie möglich auf deine Nachricht antworten</p>
+    </div>
   </div>
 )
 
