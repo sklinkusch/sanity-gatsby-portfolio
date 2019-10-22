@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.addresselement {
+  flex: 0 0 220px;
+}
+
+.addresselement p {
+  margin: 0;
+}
+
+.addresstitle {
+  text-transform: uppercase;
+  font-style: italic;
+}
