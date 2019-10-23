@@ -1,8 +1,17 @@
+@import "../styles/custom-media.css";
+
 .container {
+  box-sizing: border-box;
+  max-width: 960px;
+  padding: 1.5em;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 40px;
+
+  @media (--media-min-small) {
+    padding: 2em;
+  }
 }
 
 .addresselement {
