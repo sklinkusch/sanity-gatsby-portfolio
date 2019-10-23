@@ -28,7 +28,7 @@ const Addresssection = () => {
           <p>{openingTimes}</p>
         </div>
         <div className='nachricht addresselement'>
-          <h3 className='addresstitle'>{message}</h3>
+          <h3 className='addresstitle'><i className='far fa-envelope' /> {message}</h3>
           <p>{email}</p>
           <p>{replyAsap}</p>
         </div>
