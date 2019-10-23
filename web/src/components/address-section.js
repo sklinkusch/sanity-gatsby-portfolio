@@ -1,5 +1,6 @@
 import React from 'react'
 import './address-section.css'
+import '@fortawesome/fontawesome-free/js/all'
 
 const Addresssection = () => {
   const hotline = 'Hotline'
