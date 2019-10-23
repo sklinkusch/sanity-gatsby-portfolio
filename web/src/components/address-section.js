@@ -23,7 +23,7 @@ const Addresssection = () => {
           <p>{openingTimes}</p>
         </div>
         <div className='livechat addresselement'>
-          <h3 className='addresstitle'>{livechat}</h3>
+          <h3 className='addresstitle'><i className='far fa-comment-alt' /> {livechat}</h3>
           <p>{useWindow}</p>
           <p>{openingTimes}</p>
         </div>
