@@ -16,7 +16,7 @@ const Addresssection = () => {
     <div className='wrapper'>
       <div className='container'>
         <div className='hotline addresselement'>
-          <h3 className='addresstitle'>{hotline}</h3>
+          <h3 className='addresstitle'><i className='fas fa-mobile' /> {hotline}</h3>
           <p>
             {callUs}<span>{phoneNumber}</span>
           </p>
