@@ -2,15 +2,14 @@ import React from 'react'
 import './address-section.css'
 import '@fortawesome/fontawesome-free/js/all'
 
-const Addresssection = () => {
+const Addresssection = props => {
+  const {phone, email} = props
   const hotline = 'Hotline'
   const callUs = 'Ruf uns an: '
-  const phoneNumber = '+49 511 87458409'
   const openingTimes = 'Mo. - Fr. von 9:00 - 17:00 Uhr'
   const livechat = 'Live Chat'
   const useWindow = 'Benutze das Charfenster unten rechts'
   const message = 'Nachricht'
-  const email = 'fragen@sleepink.de'
   const replyAsap = 'Wir werden so schnell wie möglich auf deine Nachricht antworten'
   return (
     <div className='wrapper'>
@@ -18,7 +17,7 @@ const Addresssection = () => {
         <div className='hotline addresselement'>
           <h3 className='addresstitle'><i className='fas fa-mobile' /> {hotline}</h3>
           <p>
-            {callUs}<span>{phoneNumber}</span>
+            {callUs}<span>{phone}</span>
           </p>
           <p>{openingTimes}</p>
         </div>

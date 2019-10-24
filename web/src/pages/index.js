@@ -83,7 +83,7 @@ const IndexPage = props => {
     : []
   const [contact] = contactNode
   const { _rawBody: contactBody } = contact
-  const { phone, email } = contactBody.map(element => element.children[0].text)
+  const [phone, email] = contactBody.map(element => element.children[0].text)
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
