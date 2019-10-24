@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
@@ -61,7 +61,7 @@ export const query = graphql`
 `
 
 const IndexPage = props => {
-  const { data, errors } = props
+  const {data, errors} = props
 
   if (errors) {
     return (
@@ -73,16 +73,21 @@ const IndexPage = props => {
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
+      // filter out contact node => no real project
       .filter(project => project.title !== 'contact')
       .filter(filterOutDocsWithoutSlugs)
       .filter(filterOutDocsPublishedInTheFuture)
     : []
+  // find only node named contact
   const contactNode = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
       .filter(project => project.title === 'contact')
     : []
+  // first destructuring: get info out of array
   const [contact] = contactNode
-  const { _rawBody: contactBody } = contact
+  // second destructuring: only the property _rawBody contains useful information
+  const {_rawBody: contactBody} = contact
+  // map over contactBody, new array contains only phone number and email
   const [phone, email] = contactBody.map(element => element.children[0].text)
   if (!site) {
     throw new Error(
@@ -91,6 +96,7 @@ const IndexPage = props => {
   }
 
   return (
+    // pass down phone and email to LayoutContainer
     <Layout phone={phone} email={email}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>

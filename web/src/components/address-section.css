@@ -1,5 +1,6 @@
 @import "../styles/custom-media.css";
 
+/* wrapper element: center the whole component */
 .wrapper {
   box-sizing: border-box;
   max-width: 960px;
@@ -7,6 +8,7 @@
   margin: 0 auto;
 }
 
+/* grid container: set up grid and media queries */
 .container {
   margin: 0;
   padding: 0;
@@ -25,10 +27,12 @@
   }
 }
 
+/* reset line spacing of paragraphs */
 .addresselement p {
   margin: 0;
 }
 
+/* set titles uppercase and italic */
 .addresstitle {
   text-transform: uppercase;
   font-style: italic;

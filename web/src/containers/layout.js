@@ -11,6 +11,7 @@ const query = graphql`
 `
 
 function LayoutContainer (props) {
+  // extract phone and email from props
   const {phone, email} = props
   const [showNav, setShowNav] = useState(false)
   function handleShowNav () {
@@ -29,6 +30,7 @@ function LayoutContainer (props) {
           )
         }
         return (
+          // pass down phone and email to Layout
           <Layout
             {...props}
             phone={phone}
