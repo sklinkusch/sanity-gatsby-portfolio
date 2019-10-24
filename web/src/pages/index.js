@@ -19,7 +19,7 @@ export const query = graphql`
       keywords
     }
     projects: allSanityProject(
-      limit: 6
+      limit: 7
       sort: {fields: [publishedAt], order: DESC}
       filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
@@ -50,6 +50,7 @@ export const query = graphql`
           }
           title
           _rawExcerpt
+          _rawBody
           slug {
             current
           }
@@ -69,14 +70,20 @@ const IndexPage = props => {
       </Layout>
     )
   }
-
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
+      .filter(project => project.title !== 'contact')
       .filter(filterOutDocsWithoutSlugs)
       .filter(filterOutDocsPublishedInTheFuture)
     : []
-
+  const contactNode = (data || {}).projects
+    ? mapEdgesToNodes(data.projects)
+      .filter(project => project.title === 'contact')
+    : []
+  const [contact] = contactNode
+  const {_rawBody: contactBody} = contact
+  const {phone, email} = contactBody.map(element => element.children[0].text)
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
