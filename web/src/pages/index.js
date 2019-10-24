@@ -1,5 +1,5 @@
 import React from 'react'
-import {graphql} from 'gatsby'
+import { graphql } from 'gatsby'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
@@ -61,7 +61,7 @@ export const query = graphql`
 `
 
 const IndexPage = props => {
-  const {data, errors} = props
+  const { data, errors } = props
 
   if (errors) {
     return (
@@ -82,8 +82,8 @@ const IndexPage = props => {
       .filter(project => project.title === 'contact')
     : []
   const [contact] = contactNode
-  const {_rawBody: contactBody} = contact
-  const {phone, email} = contactBody.map(element => element.children[0].text)
+  const { _rawBody: contactBody } = contact
+  const { phone, email } = contactBody.map(element => element.children[0].text)
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -91,7 +91,7 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout>
+    <Layout phone={phone} email={email}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
