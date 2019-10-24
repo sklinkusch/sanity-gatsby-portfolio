@@ -1,13 +1,16 @@
 import React from 'react'
 import Header from './header'
+import Addresssection from './address-section'
 
 import '../styles/layout.css'
 import styles from './layout.module.css'
 
-const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, phone, email }) => (
   <>
     <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
     <div className={styles.content}>{children}</div>
+    {/* pass down phone and email to Addresssection */}
+    <Addresssection phone={phone} email={email} />
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
         <div className={styles.siteInfo}>

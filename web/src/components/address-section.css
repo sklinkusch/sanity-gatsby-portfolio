@@ -1,0 +1,39 @@
+@import "../styles/custom-media.css";
+
+/* wrapper element: center the whole component */
+.wrapper {
+  box-sizing: border-box;
+  max-width: 960px;
+  padding: 1.5em;
+  margin: 0 auto;
+}
+
+/* grid container: set up grid and media queries */
+.container {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2em;
+
+  @media (--media-min-small) {
+    padding: 2em;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (--media-min-medium) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* reset line spacing of paragraphs */
+.addresselement p {
+  margin: 0;
+}
+
+/* set titles uppercase and italic */
+.addresstitle {
+  text-transform: uppercase;
+  font-style: italic;
+}

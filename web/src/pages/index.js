@@ -19,7 +19,7 @@ export const query = graphql`
       keywords
     }
     projects: allSanityProject(
-      limit: 6
+      limit: 7
       sort: {fields: [publishedAt], order: DESC}
       filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
@@ -50,6 +50,7 @@ export const query = graphql`
           }
           title
           _rawExcerpt
+          _rawBody
           slug {
             current
           }
@@ -69,14 +70,25 @@ const IndexPage = props => {
       </Layout>
     )
   }
-
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
+      // filter out contact node => no real project
+      .filter(project => project.title !== 'contact')
       .filter(filterOutDocsWithoutSlugs)
       .filter(filterOutDocsPublishedInTheFuture)
     : []
-
+  // find only node named contact
+  const contactNode = (data || {}).projects
+    ? mapEdgesToNodes(data.projects)
+      .filter(project => project.title === 'contact')
+    : []
+  // first destructuring: get info out of array
+  const [contact] = contactNode
+  // second destructuring: only the property _rawBody contains useful information
+  const {_rawBody: contactBody} = contact
+  // map over contactBody, new array contains only phone number and email
+  const [phone, email] = contactBody.map(element => element.children[0].text)
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -84,7 +96,8 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout>
+    // pass down phone and email to LayoutContainer
+    <Layout phone={phone} email={email}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
